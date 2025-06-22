@@ -68,6 +68,41 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .style-selector {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .style-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .style-btn.active {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            border-color: #4ecdc4;
+        }
+
+        .style-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .style-btn.active:hover {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        }
+
         .toggle-container {
             display: flex;
             align-items: center;
@@ -275,12 +310,144 @@
             border: 1px solid rgba(78, 205, 196, 0.2);
         }
 
-        .chat-overlay.transparent-mode .empty-state {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
+        /* Mega Man 8 Dialogue Style */
+        .chat-overlay.megaman-mode {
+            background: transparent;
+            border: none;
+            padding: 10px;
+        }
+
+        .chat-overlay.megaman-mode .audio-visualizer {
+            display: none;
+        }
+
+        .chat-overlay.megaman-mode .chat-message {
+            background: linear-gradient(135deg, #1a4d7a, #2563eb);
+            border: 3px solid #60a5fa;
+            border-radius: 0;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            position: relative;
+            font-family: 'Courier New', monospace;
+            box-shadow: 
+                inset 0 0 0 2px #1e40af,
+                0 4px 8px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(96, 165, 250, 0.3);
+            max-width: 90%;
+            backdrop-filter: none;
+            border-left: 3px solid #60a5fa;
+        }
+
+        .chat-overlay.megaman-mode .chat-message::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #60a5fa, #3b82f6, #1d4ed8, #60a5fa);
+            z-index: -1;
+            border-radius: 0;
+        }
+
+        .chat-overlay.megaman-mode .chat-message::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #93c5fd, transparent);
+            animation: megamanScan 2s linear infinite;
+        }
+
+        @keyframes megamanScan {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        .chat-overlay.megaman-mode .message-text {
+            font-size: 16px;
+            line-height: 1.4;
+            color: #ffffff;
+            text-shadow: 0 0 4px rgba(96, 165, 250, 0.8);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .chat-overlay.megaman-mode .timestamp {
+            font-size: 10px;
+            color: #93c5fd;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 2px rgba(147, 197, 253, 0.8);
+        }
+
+        .chat-overlay.megaman-mode .interim-message {
+            background: linear-gradient(135deg, #065f46, #047857);
+            border-color: #10b981;
+            animation: megamanPulse 1s ease-in-out infinite alternate;
+        }
+
+        .chat-overlay.megaman-mode .interim-message::before {
+            background: linear-gradient(45deg, #10b981, #059669, #047857, #10b981);
+        }
+
+        .chat-overlay.megaman-mode .interim-message .message-text {
+            color: #d1fae5;
+            text-shadow: 0 0 4px rgba(16, 185, 129, 0.8);
+        }
+
+        .chat-overlay.megaman-mode .interim-message .timestamp {
+            color: #6ee7b7;
+            text-shadow: 0 0 2px rgba(110, 231, 183, 0.8);
+        }
+
+        @keyframes megamanPulse {
+            0% { box-shadow: 
+                inset 0 0 0 2px #047857,
+                0 4px 8px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(16, 185, 129, 0.3); }
+            100% { box-shadow: 
+                inset 0 0 0 2px #047857,
+                0 4px 8px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(16, 185, 129, 0.6); }
+        }
+
+        .chat-overlay.megaman-mode .empty-state {
+            background: linear-gradient(135deg, #1a4d7a, #2563eb);
+            border: 3px solid #60a5fa;
+            color: #93c5fd;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 4px rgba(96, 165, 250, 0.8);
             padding: 20px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0;
+            box-shadow: 
+                inset 0 0 0 2px #1e40af,
+                0 4px 8px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(96, 165, 250, 0.3);
+        }
+
+        /* Hide visualizer in Mega Man mode */
+        .widget-container.megaman-mode .audio-visualizer {
+            display: none;
+        }
+
+        /* Body background for Mega Man mode */
+        body.megaman-mode {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .widget-container.megaman-mode {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
         }
 
         .chat-message {
@@ -339,7 +506,7 @@
 
         /* Auto-fade old messages */
         .chat-message.fade-out {
-            animation: fadeOut 2s ease forwards;
+            animation: fadeOut 1s ease forwards;
         }
 
         @keyframes fadeOut {
@@ -406,12 +573,10 @@
         </div>
 
         <div class="control-panel">
-            <div class="toggle-container">
-                <span class="toggle-label">Solid UI</span>
-                <div id="modeToggle" class="toggle-switch">
-                    <div class="toggle-slider"></div>
-                </div>
-                <span class="toggle-label">Transparent</span>
+            <div class="style-selector">
+                <button id="solidBtn" class="style-btn active">Solid</button>
+                <button id="transparentBtn" class="style-btn">Transparent</button>
+                <button id="megamanBtn" class="style-btn">Mega Man</button>
             </div>
         </div>
 
@@ -454,7 +619,14 @@
                 this.error = document.getElementById('error');
                 this.chatOverlay = document.getElementById('chatOverlay');
                 this.visualizer = document.getElementById('visualizer');
-                this.modeToggle = document.getElementById('modeToggle');
+                this.widgetContainer = document.querySelector('.widget-container');
+                
+                // Style buttons
+                this.solidBtn = document.getElementById('solidBtn');
+                this.transparentBtn = document.getElementById('transparentBtn');
+                this.megamanBtn = document.getElementById('megamanBtn');
+                
+                this.currentStyle = 'solid';
             }
 
             initVisualizer() {
@@ -484,10 +656,10 @@
                 this.startBtn.addEventListener('click', () => this.startListening());
                 this.stopBtn.addEventListener('click', () => this.stopListening());
                 
-                // Mode toggle functionality
-                if (this.modeToggle) {
-                    this.modeToggle.addEventListener('click', () => this.toggleMode());
-                }
+                // Style button functionality
+                this.solidBtn.addEventListener('click', () => this.setStyle('solid'));
+                this.transparentBtn.addEventListener('click', () => this.setStyle('transparent'));
+                this.megamanBtn.addEventListener('click', () => this.setStyle('megaman'));
                 
                 // Auto-start for OBS convenience (optional)
                 document.addEventListener('keydown', (e) => {
@@ -500,22 +672,43 @@
                         }
                     }
                     
-                    // Toggle mode with 'T' key
-                    if (e.key === 't' || e.key === 'T') {
-                        this.toggleMode();
-                    }
+                    // Style shortcuts
+                    if (e.key === '1') this.setStyle('solid');
+                    if (e.key === '2') this.setStyle('transparent');
+                    if (e.key === '3') this.setStyle('megaman');
                 });
             }
 
-            toggleMode() {
-                if (!this.modeToggle) return;
+            setStyle(style) {
+                // Remove all style classes
+                document.body.classList.remove('megaman-mode');
+                this.widgetContainer.classList.remove('megaman-mode');
+                this.chatOverlay.classList.remove('transparent-mode', 'megaman-mode');
                 
-                this.modeToggle.classList.toggle('active');
-                this.chatOverlay.classList.toggle('transparent-mode');
+                // Remove active class from all buttons
+                this.solidBtn.classList.remove('active');
+                this.transparentBtn.classList.remove('active');
+                this.megamanBtn.classList.remove('active');
                 
-                // Optional: Save preference
-                const isTransparent = this.chatOverlay.classList.contains('transparent-mode');
-                console.log('Mode switched to:', isTransparent ? 'Transparent' : 'Solid');
+                // Apply new style
+                switch(style) {
+                    case 'transparent':
+                        this.chatOverlay.classList.add('transparent-mode');
+                        this.transparentBtn.classList.add('active');
+                        break;
+                    case 'megaman':
+                        document.body.classList.add('megaman-mode');
+                        this.widgetContainer.classList.add('megaman-mode');
+                        this.chatOverlay.classList.add('megaman-mode');
+                        this.megamanBtn.classList.add('active');
+                        break;
+                    default: // solid
+                        this.solidBtn.classList.add('active');
+                        break;
+                }
+                
+                this.currentStyle = style;
+                console.log('Style switched to:', style);
             }
 
             checkBrowserSupport() {
